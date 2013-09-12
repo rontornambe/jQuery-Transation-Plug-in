@@ -17,6 +17,3 @@ After the plug-in is initialized, a drop-down list of supported languages (or an
 
 The translation is performed for all specified jQuery selectors. Any element that contains inner text (p,span,a,...) or the input element (type 'text' or 'button') can be included in the selection. Note that translations are context based, so “phrases” are more accurately translated than short descriptions (headings, menu items, buttons, etc.). For example, “General Information” or "Order Date” are too ambiguous to translate accurately in all supported languages.
 
-<h2>Installation</h2>
-<p>Download the plug-in.</p>
-<p><b>Provide Script References like the following:</b></p>
