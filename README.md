@@ -51,7 +51,7 @@ The translation is performed for all specified jQuery selectors. Any element tha
         <li>$("p").translator(appID: BingAppID, tolang: 'fr');</li>
         <li>$("p").translator(appID: BingAppID);</li>
       </ul>
-      <p>A typical page specifys the following statements:</p>
+      <p>A typical page specifies the following statements:</p>
       <div>...</div>
       &lt;head&gt;
       <div>...</div>
