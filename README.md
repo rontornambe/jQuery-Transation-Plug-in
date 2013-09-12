@@ -67,4 +67,4 @@ The translation is performed for all specified jQuery selectors. Any element tha
       <div>...</div>
       &lt;/head&gt;
       <br></br>
-      <p>View a customized <i>Supported Lanugages</i> drop-down list <a href="http://msaccess2web.com" target="_blank">example</a>. You can also send emails with your questions, comments and suggestions at this site.</p>
+      <p>View a customized <i>Supported Lanugages</i> drop-down list <a href="http://msaccess2web.bunkerhill.com" target="_blank">example</a>. You can also send emails with your questions, comments and suggestions at this site.</p>
