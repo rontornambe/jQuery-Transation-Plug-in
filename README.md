@@ -17,18 +17,13 @@ After the plug-in is initialized, a drop-down list of supported languages (or an
 
 The translation is performed for all specified jQuery selectors. Any element that contains inner text (p,span,a,...) or the input element (type 'text' or 'button') can be included in the selection. Note that translations are context based, so “phrases” are more accurately translated than short descriptions (headings, menu items, buttons, etc.). For example, “General Information” or "Order Date” are too ambiguous to translate accurately in all supported languages.
 
-<b>Installation</b>
-<p>Download the plug-in.</p>
-<p><b>Provide Script References like the following:</b></p>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"> 
-
-
 <b>INSTALLATION</b>
 <p>Download the plug-in.</p>
 <p><b>Provide Script References like the following:</b></p>
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-   <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"></script>
+
+
 <p><b>Initialize the <i>translator</i> plug-in</b></p>
 <p>Call the <i>translator</i> initialize function specifying the jQuery selectors (DOM node names, (.) classes, (#) element ids, etc.) containing the text you want translated. Your Bing AppId must be specified. You can optionally specify a DOM Element to contain the Supported Language List, which is displayed in the language detected by the plug-in or by using the “listLanguage” option. You can also choose not to display the Language List, as well as applying the translation to a specified language using the “tolang” option.</p>
 
