@@ -27,6 +27,21 @@ The translation is performed for all specified jQuery selectors. Any element tha
 <p><b>Initialize the <i>translator</i> plug-in</b></p>
 <p>Call the <i>translator</i> initialize function specifying the jQuery selectors (DOM node names, (.) classes, (#) element ids, etc.) containing the text you want translated. Your Bing AppId must be specified. You can optionally specify a DOM Element to contain the Supported Language List, which is displayed in the language detected by the plug-in or by using the “listLanguage” option. You can also choose not to display the Language List, as well as applying the translation to a specified language using the “tolang” option.</p>
 
+<p><b>OPTIONS</b></p>
+<b>appID</b>
+<p style="display:inline;">The Microsoft Bing API Application ID you obtained for the website you wish to deploy this plug-in on. <b>(Required)</b></p>
+
+<b>callback</b>
+<p style="display:inline;">Function to call after translator completes.</p>
+
+<b>languageListNode</b><p style="display:inline;">DOM Element object that will contain the Supported Languages Drop-Down List (id='_supportedLanguagesList' <b>reserved - do not include this id in your HTML</b>).</p>
+
+<b>languagesList</b><p style="display:inline;">An array of language codes to display in the Drop-Down List.</p>
+<b>nolist</b><p style="display:inline;">The Languages Drop Down List is not created or displayed.</p>
+<b>listLanguage</b><p style="display:inline;">The 2-4 character code associated with the written language of your web pages, which is used to override the auto-detected language. This parameter only applies to the Languages Drop Down List and not to selected content. </p>
+<b>tolang</b><p style="display:inline;">The language code (ex. 'fr') to translate the current page to. The Languages Drop Down List is not affected by this option.</p>
+<p>For a list of currently supported language codes: <a href="http://msdn.microsoft.com/en-us/library/hh456380.aspx" target="_blank">Bing Translator Language Codes</a></p>
+
 <b>EXAMPLES</b>
       <p> The following initialization examples illustrate the use of these options.</p>
         <ul>
@@ -41,13 +56,13 @@ The translation is performed for all specified jQuery selectors. Any element tha
       <head>
       <div style="margin-left:24px">
         <div>...</div>
-        <div><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script></div>
-        <div><script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"></script></div>
-        <div><script type="text/javascript" ></div>
-        <div style="margin-left:24px;">jQuery(document).ready(function ($) {</div>
-        <div style="margin-left:48px;">  $("p,h1,h2,span").translator({ appId: myBingApiAppId });</div>
-        <div style="margin-left:24px;">});</div>
-        <div></script></div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"></script>
+        <script type="text/javascript" >
+            $(function ($) {
+                $("p,h1,h2,span").translator({ appId: myBingApiAppId });
+        });
+        </script>
         <div>...</div>
       </div>
       </head>
