@@ -59,9 +59,9 @@ The translation is performed for all specified jQuery selectors. Any element tha
         /* Assumes you have copied the translator plug-in to a sub-folder named "js" */ <br \>
         &lt;script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"&gt;&lt;/script&gt;<br \>
         &lt;script type="text/javascript" &gt;<br \>
-        $(function ($) { <br \>
-                $("p,h1,h2,span").translator({ appId: myBingApiAppId });<br \>
-        });<br \>
+        &nbsp;&nbsp;$(function ($) { <br \>
+        &nbsp;&nbsp;&nbsp;&nbsp;$("p,h1,h2,span").translator({ appId: myBingApiAppId });<br \>
+        &nbsp;&nbsp;});<br \>
         &lt;/script&gt;<br \>
       </div>
       <div>...</div>
