@@ -44,25 +44,24 @@ The translation is performed for all specified jQuery selectors. Any element tha
 
 <b>EXAMPLES</b>
       <p> The following initialization examples illustrate the use of these options.</p>
-        <ul>
+      <ul>
         <li>$("p,h1,h2,.xlatext,#topic").translator({ appID: BingAppID, languageListNode: $("#languages").get(0) });</li>
         <li>$("p,span").translator({ appID: BingAppID, languagesList: ['en','fr','de','es'] });</li>
         <li>$("p").translator(appID: BingAppID, callback: function() { alert('Do Something') } );</li>
         <li>$("p").translator(appID: BingAppID, tolang: 'fr');</li>
         <li>$("p").translator(appID: BingAppID);</li>
-        </ul>
+      </ul>
       <p>This page implements the translator by specifying the following statements:</p>
       <div>...</div>
       &lt;head&gt;
-      <div style="margin-left:24px">
         <span>...</span><br \>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"></script>
-        <script type="text/javascript" >
+        &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" &gt;
             $(function ($) {
                 $("p,h1,h2,span").translator({ appId: myBingApiAppId });
         });
-        </script>
+        &gt;&lt;/script&gt;
       </div>
       <span>...</span><br \>
       &lt;/head&gt;
