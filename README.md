@@ -21,7 +21,7 @@ The translation is performed for all specified jQuery selectors. Any element tha
 <p>Download the plug-in.</p>
 <p><b>Provide Script References like the following:</b></p>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.translator-ms-1.1.0.min.js"></script>
 
 
 <p><b>Initialize the <i>translator</i> plug-in</b></p>
@@ -57,7 +57,7 @@ The translation is performed for all specified jQuery selectors. Any element tha
       <div>...</div>
         &lt;script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js' &gt;&lt;/script&gt;<br \>
         <b> /* Assumes you have copied the translator plug-in to a sub-folder named "js" */ </b><br \>
-        &lt;script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"&gt;&lt;/script&gt;<br \>
+        &lt;script type="text/javascript" src="js/jquery.translator-ms-1.1.0.min.js"&gt;&lt;/script&gt;<br \>
         &lt;script type="text/javascript" &gt;<br \>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(function ($) { <br \>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("p,h1,h2,span").translator({ appId: myBingApiAppId });<br \>
