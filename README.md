@@ -54,18 +54,19 @@ The translation is performed for all specified jQuery selectors. Any element tha
       <p>This page implements the translator by specifying the following statements:</p>
       <div>...</div>
       &lt;head&gt;
-        <span>...</span><br \>
-        &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"&gt;&lt;/script&gt;<br \>
+      <div>...</div>
+        &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" ></script><br \>
+        /* Assumes you have copied the translator plug-in to a sub-folder named "js" */
         &lt;script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"&gt;&lt;/script&gt;<br \>
         &lt;script type="text/javascript" &gt;<br \>
-            $(function ($) { <br \>
+        $(function ($) { <br \>
                 $("p,h1,h2,span").translator({ appId: myBingApiAppId });<br \>
         });<br \>
-        &gt;&lt;/script&gt;<br \>
+        &lt;/script&gt;<br \>
       </div>
-      <span>...</span><br \>
+      <div>...</div>
       &lt;/head&gt;
-      <span>...</span><br \>
+      <div>...</div>
       <br></br>
       <span>Translate this page using the</span> <a href="javascript:$('#_supportedLanguagesList')[0].focus();">Supported Languages</a> <span>drop-down list, if you haven't done so already.</span><br></br>
       <p>View a customized <i>Supported Lanugages</i> drop-down list <a href="http://msaccess2web.com" target="_blank">example</a>. You can also send emails with your questions, comments and suggestions at this site.</p>
