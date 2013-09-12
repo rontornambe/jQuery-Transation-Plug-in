@@ -27,6 +27,12 @@ The translation is performed for all specified jQuery selectors. Any element tha
 <p><b>Initialize the <i>translator</i> plug-in</b></p>
 <p>Call the <i>translator</i> initialize function specifying the jQuery selectors (DOM node names, (.) classes, (#) element ids, etc.) containing the text you want translated. Your Bing AppId must be specified. You can optionally specify a DOM Element to contain the Supported Language List, which is displayed in the language detected by the plug-in or by using the “listLanguage” option. You can also choose not to display the Language List, as well as applying the translation to a specified language using the “tolang” option.</p>
 
+<p><b>OPTIONS</b></p>
+
+<b>appID</b>
+<p style="display:inline;">: The Microsoft Bing API Application ID you obtained for the website you wish to deploy this plug-in on. <b>(Required</b></p>
+<br></br>
+
 <b>OPTIONS</b>
 <b>appID</b><p style="display:inline;">: The Microsoft Bing API Application ID you obtained for the website you wish to deploy this plug-in on. <b>(Required)</b></p><br></br>
       <b>callback</b><p style="display:inline;">: function to call after translator completes.</p><br></br>
