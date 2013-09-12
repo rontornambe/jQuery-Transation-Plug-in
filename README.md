@@ -51,7 +51,7 @@ The translation is performed for all specified jQuery selectors. Any element tha
         <li>$("p").translator(appID: BingAppID, tolang: 'fr');</li>
         <li>$("p").translator(appID: BingAppID);</li>
       </ul>
-      <p>This page implements the translator by specifying the following statements:</p>
+      <p>A typical page specifys the following statements:</p>
       <div>...</div>
       &lt;head&gt;
       <div>...</div>
@@ -59,9 +59,9 @@ The translation is performed for all specified jQuery selectors. Any element tha
         /* Assumes you have copied the translator plug-in to a sub-folder named "js" */ <br \>
         &lt;script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"&gt;&lt;/script&gt;<br \>
         &lt;script type="text/javascript" &gt;<br \>
-        &nbsp;&nbsp;&nbsp;&nbsp;$(function ($) { <br \>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("p,h1,h2,span").translator({ appId: myBingApiAppId });<br \>
-        &nbsp;&nbsp;&nbsp;&nbsp;});<br \>
+        <div style='margin-left:4px'>$(function ($) { <\div>
+        <div style='margin-left:8px'>$("p,h1,h2,span").translator({ appId: myBingApiAppId });<\div>
+        <div style='margin-left:4px'>});<\div>
         &lt;/script&gt;<br \>
       </div>
       <div>...</div>
