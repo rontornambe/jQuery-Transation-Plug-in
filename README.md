@@ -24,3 +24,50 @@ The translation is performed for all specified jQuery selectors. Any element tha
     <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"> 
 
 
+<b>INSTALLATION</b>
+<p>Download the plug-in.</p>
+<p><b>Provide Script References like the following:</b></p>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+   <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"> 
+<p><b>Initialize the <i>translator</i> plug-in</b></p>
+<p>Call the <i>translator</i> initialize function specifying the jQuery selectors (DOM node names, (.) classes, (#) element ids, etc.) containing the text you want translated. Your Bing AppId must be specified. You can optionally specify a DOM Element to contain the Supported Language List, which is displayed in the language detected by the plug-in or by using the “listLanguage” option. You can also choose not to display the Language List, as well as applying the translation to a specified language using the “tolang” option.</p>
+
+<b>OPTIONS</b>
+<b>appID</b><p style="display:inline;">: The Microsoft Bing API Application ID you obtained for the website you wish to deploy this plug-in on. <b>(Required)</b></p><br></br>
+      <b>callback</b><p style="display:inline;">: function to call after translator completes.</p><br></br>
+      <b>languageListNode</b><p style="display:inline;">: DOM Element object that will contain the Supported Languages Drop-Down List (id='_supportedLanguagesList' <b>reserved - do not include this id in your HTML</b>).</p><br></br>
+      <b>languagesList</b><p style="display:inline;">: an array of language codes to display in the Drop-Down List.</p><br></br>
+      <b>nolist</b><p style="display:inline;">: the Languages Drop Down List is not created or displayed.</p><br></br>
+      <b>listLanguage</b><p style="display:inline;">: the 2-4 character code associated with the written language of your web pages, which is used to override the auto-detected language. This parameter only applies to the Languages Drop Down List and not to selected content. </p><br></br>
+      <b>tolang</b><p style="display:inline;">: the language code (ex. 'fr') to translate the current page to. The Languages Drop Down List is not affected by this option.</p><br></br>
+      <p>For a list of currently supported language codes: <a href="http://msdn.microsoft.com/en-us/library/hh456380.aspx" target="_blank">Bing Translator Language Codes</a></p>
+
+<b>EXAMPLES</b>
+      <p> The following initialization examples illustrate the use of these options.</p>
+        <ul>
+        <li>$("p,h1,h2,.xlatext,#topic").translator({ appID: BingAppID, languageListNode: $("#languages").get(0) });</li>
+        <li>$("p,span").translator({ appID: BingAppID, languagesList: ['en','fr','de','es'] });</li>
+        <li>$("p").translator(appID: BingAppID, callback: function() { alert('Do Something') } );</li>
+        <li>$("p").translator(appID: BingAppID, tolang: 'fr');</li>
+        <li>$("p").translator(appID: BingAppID);</li>
+        </ul>
+      <p>This page implements the translator by specifying the following statements:</p>
+      <div>...</div>
+      <head>
+      <div style="margin-left:24px">
+        <div>...</div>
+        <div><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script></div>
+        <div><script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"></script></div>
+        <div><script type="text/javascript" ></div>
+        <div style="margin-left:24px;">jQuery(document).ready(function ($) {</div>
+        <div style="margin-left:48px;">  $("p,h1,h2,span").translator({ appId: myBingApiAppId });</div>
+        <div style="margin-left:24px;">});</div>
+        <div></script></div>
+        <div>...</div>
+      </div>
+      </head>
+      <div>...</div>
+      <br></br>
+      <span>Translate this page using the</span> <a href="javascript:$('#_supportedLanguagesList')[0].focus();">Supported Languages</a> <span>drop-down list, if you haven't done so already.</span><br></br>
+      <p>View a customized <i>Supported Lanugages</i> drop-down list <a href="http://msaccess2web.com" target="_blank">example</a>. You can also send emails with your questions, comments and suggestions at this site.</p>
+Status API Training Shop Blog About © 2013 GitHub, Inc. Terms Privacy Security Contact 
