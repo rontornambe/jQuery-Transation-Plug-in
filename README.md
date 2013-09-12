@@ -55,13 +55,13 @@ The translation is performed for all specified jQuery selectors. Any element tha
       <div>...</div>
       &lt;head&gt;
         <span>...</span><br \>
-        &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"&gt;&lt;/script&gt;
-        &lt;script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"&gt;&lt;/script&gt;
-        &lt;script type="text/javascript" &gt;
-            $(function ($) {
-                $("p,h1,h2,span").translator({ appId: myBingApiAppId });
-        });
-        &gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"&gt;&lt;/script&gt;<br \>
+        &lt;script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"&gt;&lt;/script&gt;<br \>
+        &lt;script type="text/javascript" &gt;<br \>
+            $(function ($) { <br \>
+                $("p,h1,h2,span").translator({ appId: myBingApiAppId });<br \>
+        });<br \>
+        &gt;&lt;/script&gt;<br \>
       </div>
       <span>...</span><br \>
       &lt;/head&gt;
