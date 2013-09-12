@@ -56,7 +56,7 @@ The translation is performed for all specified jQuery selectors. Any element tha
       &lt;head&gt;
       <div>...</div>
         &lt;script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js' &gt;&lt;/script&gt;<br \>
-        <span style='color: #20b2aa'> /* Assumes you have copied the translator plug-in to a sub-folder named "js" */ </span><br \>
+        <b> /* Assumes you have copied the translator plug-in to a sub-folder named "js" */ </b><br \>
         &lt;script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"&gt;&lt;/script&gt;<br \>
         &lt;script type="text/javascript" &gt;<br \>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(function ($) { <br \>
