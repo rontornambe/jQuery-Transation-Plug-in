@@ -20,11 +20,7 @@ The translation is performed for all specified jQuery selectors. Any element tha
 <b>Installation</b>
 <p>Download the plug-in.</p>
 <p><b>Provide Script References like the following:</b></p>
-<div style="width:800%; overflow:auto;">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-</div>
-<div>
-   <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"> 
-</div>
+    <script type="text/javascript" src="js/jquery.translator-ms-1.0.0.min.js"> 
 
 
