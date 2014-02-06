@@ -1,0 +1,259 @@
+  /* 
+jQuery "translator" plug-in, written by Ron Tornambe and distributed under the Open Source Initiative OSI - The MIT License 
+*/
+
+(function($) {
+
+  var cookies = {
+    read: function(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) {
+          return c.substring(nameEQ.length, c.length);
+        }
+      }
+      return null;
+    },
+    create: function(name, value, days) {
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+      }
+      else var expires = "";
+      try {
+        document.cookie = name + "=" + value + expires + "; path=/";
+      } catch (e) { }
+    },
+    erase: function(name) {
+      this.create(name, "", -1);
+    }
+  }
+
+  var settings = {
+    'appID': null,
+    'listLanguage': "",
+    'languageListNode': null,
+    'languagesList': null,
+    'nolist': false,
+    'tolang': null,
+    'callback': null
+  };
+  var gvars = {
+    $this: null,
+    cookieName: 'bhcTranslator',
+    charsXlated: 0,
+    lastLang: null
+  };
+  function isValueElement(elem) {
+    return elem.nodeName.toLowerCase() == 'input' && (elem.type.toLowerCase() == 'text' || elem.typetoLowerCase() == 'button');
+  }
+  function translate(toLang) {
+    try {
+      function ajaxTranslate(textToTranslate, toElem, LastElem) {
+        var p = {};
+        p.appid = settings.appID;
+        p.to = toLang;
+        p.from = settings.listLanguage;
+        p.text = textToTranslate;
+        p.contentType = 'text/html';
+        $.ajax({
+          url: 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate',
+          data: p,
+          dataType: 'jsonp',
+          jsonp: 'oncomplete',
+          complete: function(request, status) {
+          },
+          success: function(result, status) {
+            if (isValueElement(toElem)) $(toElem).val(result)
+            else $(toElem).html(result);
+            gvars.charsXlated += p.text.length;
+            if (toElem === LastElem && settings.callback)
+              settings.callback(gvars.charsXlated);
+          }
+        });
+      }
+      var src_text = null;
+      var jelem = null;
+      gvars.charsXlated = 0;
+      gvars.lastLang = toLang;
+      gvars.$this.each(function(index, jelem) {
+        if (!jelem) return;
+        src_text = $(jelem).attr("src_text");
+        if (!src_text) return;
+        ajaxTranslate(src_text, jelem, gvars.$this.length - 1 === index ? jelem : null);
+      });
+    } catch (e) { alert(e.messsage); }
+  }
+
+  function setupTranslation() {
+    function setupLangList(status) {
+      var langroot = null;
+
+      function getLanguagesList() {
+        var langCodes = []
+
+        function getLanguageNames(languageCodes) {
+          setupLanguageNamesList = function(response) {
+            var list = document.createElement('select');
+            list.id = "_supportedLanguagesList";
+            function sort() {
+              var my_options = $("#_supportedLanguagesList option");
+              my_options.sort(function(a, b) {
+                return a.text.localeCompare(b.text);
+              })
+              $("#_supportedLanguagesList").empty().append(my_options);
+            };
+            var optinfo = [];
+            for (var i = 0; i < response.length; i++) {
+              optinfo.push({ value: langCodes[i], text: response[i] });
+            }
+            for (var i = 0; i < response.length; i++) {
+              var opt = $(document.createElement('option'));
+              opt.text(optinfo[i].text);
+              opt.val(optinfo[i].value);
+              list.appendChild(opt.get(0));
+            }
+            $(list).bind('change', function() {
+              var toLang = $("#_supportedLanguagesList").val();
+              if (gvars.lastLang != toLang) {
+                translate(toLang);
+                gvars.lastLang = toLang;
+                cookies.create(gvars.cookieName, toLang, 365);
+              }
+            });
+            list.style.cssText = 'margin:0; padding:0;';
+            var listroot = document.createElement('div');
+            listroot.id = "_translateElements";
+            listroot.appendChild(list);
+            if (settings.languageListNode) {
+              listroot.style.cssText = 'position:relative;overflow:hidden;z-index:3;';
+            } else {
+              settings.languageListNode = document.body;
+              listroot.style.cssText = "top:8px;right:12px;position:absolute";
+            }
+            var appnode = settings.languageListNode;
+            appnode.appendChild(listroot);
+            sort();
+            var lastLang = cookies.read(gvars.cookieName);
+            var useLang = lastLang ? lastLang : settings.listLanguage;
+            $(list).val(useLang);
+            if (lastLang && $("#_supportedLanguagesList").val() != gvars.lastLang) {
+              translate(lastLang);
+            }
+            else if (settings.callback) settings.callback(gvars.charsXlated);
+          }
+          var parms = { 'appid': settings.appID, locale: settings.listLanguage, languageCodes: languageCodes };
+          $.ajax({
+            url: 'http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguageNames',
+            data: parms,
+            dataType: 'jsonp',
+            jsonp: 'oncomplete',
+            complete: function(request, status) {
+            },
+            success: function(response, status) {
+              setupLanguageNamesList(response);
+            }
+          });
+        }
+        formatLanguageCodes = function(response) {
+          langCodes = response;
+          for (var i = 0; i < response.length; i++) { languageCodes += (languageCodes.length ? "," : "") + '"' + response[i] + '"'; }
+          return getLanguageNames('[' + languageCodes + ']');
+        }
+        var languageCodes = "";
+
+        if (settings.languagesList) formatLanguageCodes(settings.languagesList);
+        else {
+          var parms = { 'appid': settings.appID };
+          $.ajax({
+            url: 'http://api.microsofttranslator.com/V2/Ajax.svc/GetLanguagesForTranslate',
+            data: parms,
+            dataType: 'jsonp',
+            jsonp: 'oncomplete',
+            complete: function(request, status) {
+            },
+            success: function(response, status) {
+              formatLanguageCodes(response);
+            }
+          });
+        };
+      }
+
+      function detectPageLanguage() {
+        try {
+          var langDetected = false;
+          gvars.$this.each(function(index, jelem) { // detect source language
+            src_text = $(jelem).attr("src_text");
+            if (!settings.listLanguage && src_text.length > 20) {
+              var parms = { 'appid': settings.appID, text: src_text };
+              $.ajax({
+                url: 'http://api.microsofttranslator.com/V2/Ajax.svc/Detect',
+                data: parms,
+                dataType: 'jsonp',
+                jsonp: 'oncomplete',
+                complete: function(request, status) {
+                },
+                success: function(result, status) {
+                  if (langDetected) return false;
+                  settings.listLanguage = result;
+                  langDetected = true;
+                  return getLanguagesList();
+                }
+              });
+            }
+          });
+        } catch (e) {
+          throw (e)
+        }
+      }
+      detectPageLanguage();
+    }
+    function setupOrigLangElems() {
+      try {
+        gvars.$this.each(function(index, jelem) { // create a new property to hold the original language text
+          src_text = isValueElement(jelem) ? $(jelem).val() : $(jelem).html();
+          $(jelem).attr("src_text", src_text);
+        });
+      } catch (e) {
+        throw (e);
+      }
+    }
+
+    setupOrigLangElems();
+    if (settings.tolang) {
+      if (settings.tolang != $("#_supportedLanguagesList").val()) translate(settings.tolang);
+    } else if (settings.nolist) {
+      if (settings.callback) settings.callback(gvars.charsXlated);
+    } else setupLangList();
+  }
+  var methods = {
+    init: function(options) {
+      gvars.$this = this;
+      gvars.charsXlated = 0;
+      gvars.lastLang = null;
+      if (options) $.extend(settings, options);
+      setupTranslation();
+      return this;
+    },
+    destroy: function() {
+      return this.each(function() {
+        $(window).unbind('.translator');
+      })
+    }
+  };
+
+  $.fn.translator = function(method) {
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
+    } else {
+      $.error('Method ' + method + ' does not exist on jQuery.translator');
+    }
+  };
+})(jQuery);
+
